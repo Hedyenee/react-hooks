@@ -1,7 +1,8 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import Ratings from "./Ratings"
 
-function MovieCard({ title, description, posterURL, rating }) {
+function MovieCard({ title, description, posterURL, Rate }) {
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={posterURL}  style={{ height:'60vmin',alignItems: 'center' }} />
@@ -10,7 +11,7 @@ function MovieCard({ title, description, posterURL, rating }) {
         <Card.Text>{description}</Card.Text>
       </Card.Body>
       <Card.Footer style={{ color:'red'}}>
-        <h5>{rating}/5</h5>
+    <Ratings Rate={Rate}  />
       </Card.Footer>
     </Card>
   );

@@ -15,8 +15,6 @@ function MovieList({ movies }) {
             description={movie.description}
             posterURL={movie.posterURL}
             Rate={movie.rating}
-            
-          
           />
         ))}
         

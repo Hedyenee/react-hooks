@@ -1,22 +1,16 @@
 import React, { useState } from "react";
-import "./App.css";
-import Movies from "./Pages/Movies";
-import Description from "./Pages/Description";
-import Trailer from "./Pages/Trailer";
-import { Routes, Route } from "react-router-dom";
-import AddMovieForm from "./Components/AddMovieForm";
-import Filter from "./Components/Filter";
-import MovieList from "./Components/MovieList";
+import AddMovieForm from "../Components/AddMovieForm";
+import Filter from "../Components/Filter";
+import MovieList from "../Components/MovieList";
 import { Rating } from "react-simple-star-rating";
 import { Container } from "react-bootstrap";
 
-function App() {
+function Movies() {
   const [Rate, setRate] = useState("");
   const [movies, setMovies] = useState([
     {
       title: "The Shawshank Redemption",
-      description: 
-       "https://www.youtube.com/embed/P9mwtI82k6E" ,
+      description:  "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.", 
        
       posterURL:
         "https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_.jpg",
@@ -25,7 +19,7 @@ function App() {
     {
       title: "The Godfather",
       description:
-        "https://www.youtube.com/embed/UaVTIH8mujA",
+        "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
       posterURL:
         "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
       rating: "04",
@@ -33,7 +27,7 @@ function App() {
     {
       title: "The Dark Knight",
       description:
-        "https://www.youtube.com/embed/EXeTwQWrcwY",
+        "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, the caped crusader must come to terms with one of the greatest psychological tests of his ability to fight injustice.",
       posterURL:
         "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg",
       rating: "03",
@@ -61,30 +55,16 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {/* <Movies /> */}
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Container>
-                <h1 style={{ color: "red" }}> Movies</h1>
-                <Rating onClick={handleRating} />
-                <Filter onFilter={filterMovies} />
-                <AddMovieForm onAdd={addMovie} />
-                <MovieList
-                  movies={movies.filter((elm) => elm.rating >= Rate)}
-                />
-              </Container>
-            </>
-          }
-        />
-        <Route path="/description/:title" element={<Description movies={movies}/>} />
-        
-      </Routes>
-    </div>
+    <>
+      <Container>
+        <h1 style={{ color: "red" }}> Movies</h1>
+        <Rating onClick={handleRating} />
+        <Filter onFilter={filterMovies} />
+        <AddMovieForm onAdd={addMovie} />
+        <MovieList movies={movies.filter((elm) => elm.rating >= Rate)} />
+      </Container>
+    </>
   );
 }
 
-export default App;
+export default Movies;
